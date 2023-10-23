@@ -1,5 +1,5 @@
-<div class="card" style="margin-top: 2%;">
-  <p-table [value]="datos.content" [tableStyle]="{ 'min-width': '50rem' }">
+<div class="card menu-container" style="margin-top: 2%;">
+  <p-table [value]="datos.content" [tableStyle]="{ 'min-width': '50rem' }" class="custom-table">
     <ng-template pTemplate="header">
       <tr>
         <th (click)="doOrder('id')">ID</th>
@@ -25,8 +25,8 @@
   </p-table>
 </div>
 <br>
-<h4 style="text-align: center;">Mostrando {{datos.numberOfElements}} registros de {{datos.totalElements}} totales</h4>
-<div class="card flex justify-content-center">
+<h4 class="menu-title" style="text-align: center;">Mostrando {{datos.numberOfElements}} registros de {{datos.totalElements}} totales</h4>
+<div class="card flex justify-content-center pagination-container">
   <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="120"
     [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
 </div>

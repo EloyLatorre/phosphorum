@@ -1,4 +1,4 @@
-<div class="card" style="margin-top: 2%;">
+<div class="card" style="margin: 5%;">
   <p-table [value]="datos.content" [tableStyle]="{ 'min-width': '50rem' }">
     <ng-template pTemplate="header">
       <tr>
@@ -6,9 +6,9 @@
         <th (click)="doOrder('name')">Nombre</th>
         <th (click)="doOrder('surname')">P. Apellido</th>
         <th (click)="doOrder('lastname')">S. Apellido</th>
-        <th (click)="doOrder('lastname')">Email</th>
-        <th (click)="doOrder('lastname')">Usuario</th>
-        <th (click)="doOrder('lastname')">Rol</th>
+        <th (click)="doOrder('email')">Email</th>
+        <th (click)="doOrder('username')">Usuario</th>
+        <th (click)="doOrder('role')">Rol</th>
         <th>Acciones</th>
       </tr>
     </ng-template>
@@ -20,18 +20,44 @@
         <td>{{u.lastname}}</td>
         <td>{{u.email}}</td>
         <td>{{u.username}}</td>
-        <td *ngIf="u.role==0">Admin</td>
-        <td *ngIf="u.role==1">User</td>
+        <td *ngIf="u.role == 0">Admin</td>
+        <td *ngIf="u.role == 1">User</td>
         <td>
-          <a [routerLink]="['/admin','user','view',u.id]">Ver usuario</a>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary" [routerLink]="['/admin', 'user', 'view', u.id]">Ver usuario</button>
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalConfirmacion" (click)="mostrarModalConfirmacion(u.id)">Borrar usuario</button>
+
+          </div>
         </td>
       </tr>
     </ng-template>
   </p-table>
 </div>
+<!-- Modal de Confirmación -->
+
+<div class="modal fade" id="modalConfirmacion" tabindex="-1" role="dialog" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalConfirmacionLabel">Confirmación de Borrado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas borrar este usuario?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="borrarUsuario(confirmacionId)">Borrar</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 <br>
 <h4 style="text-align: center;">Mostrando {{datos.numberOfElements}} registros de {{datos.totalElements}} totales</h4>
 <div class="card flex justify-content-center">
   <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="120"
-    [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    [rowsPerPageOptions]="[10, 20, 30]" class="pagination justify-content-center"></p-paginator>
 </div>

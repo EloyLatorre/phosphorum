@@ -1,32 +1,31 @@
 <div class="profile">
-    <div class="profile-header">
-      <img class="profile-picture" src="../../../../assets/avatar.webp" alt="Foto de perfil">
+  <div class="profile-header">
       <h1>Perfil de {{datos.username}}</h1>
-    </div>
-    <div class="profile-details">
-      <div class="detail">
-        <label>ID:</label>
-        <span>{{datos.id}}</span>
-      </div>
-      <div class="detail">
-        <label>Nombre completo:</label>
-        <span>{{datos.name}} {{datos.surname}} {{datos.lastname}}</span>
-      </div>
-      <div class="detail">
-        <label>Email:</label>
-        <span>{{datos.email}}</span>
-      </div>
-      <div class="detail">
-        <label>Usuario:</label>
-        <span>{{datos.username}}</span>
-      </div>
-      <div class="detail">
-        <label>Rol:</label>
-        <span *ngIf="datos.role==true">Admin</span>  
-        <span *ngIf="datos.role==false">User</span>
-      </div>
-    </div>
   </div>
-  <div class="center-button">
-  <a class="buttonList" [routerLink]="['/admin', 'user', 'plist']">Volver a la lista completa</a>
+  <div class="profile-details">
+      <div class="detail">
+          <label>ID:</label>
+          <span>{{datos.id}}</span>
+      </div>
+      <div class="detail">
+          <label>Nombre:</label>
+          <span>{{datos.name}} {{datos.surname}} {{datos.lastname}}</span>
+      </div>
+      <div class="detail">
+          <label>Email:</label>
+          <span>{{datos.email}}</span>
+      </div>
+      <div class="detail">
+          <label>Usuario:</label>
+          <span>{{datos.username}}</span>
+      </div>
+      <div class="detail">
+          <label>Rol:</label>
+          <span *ngIf="datos.role==true">Admin</span>
+          <span *ngIf="datos.role==false">User</span>
+      </div>
+  </div>
+</div>
+<div class="center-button">
+  <a class="buttonList" [routerLink]="['/admin', 'user', 'plist']">Volver</a>
 </div>
