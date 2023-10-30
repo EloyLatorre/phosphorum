@@ -103,12 +103,13 @@ export class AdminReplyFormUnroutedComponent implements OnInit {
       baseZIndex: 10000,
       maximizable: true
     });
-
+  
     this.oDynamicDialogRef.onClose.subscribe((oUser: IUser) => {
       if (oUser) {
         this.selectedUser = oUser;
-        this.replyForm.controls['user'].patchValue(oUser.name + ' ' + oUser.surname);
+        this.replyForm.controls['user'].patchValue(oUser.id);
       }
     });
   }
+  
 }
